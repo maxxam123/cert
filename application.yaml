@@ -1,20 +1,20 @@
+
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx
+  name: rancher
   namespace: default
 spec:
   destination:
-    namespace: ingress-nginx
+    namespace: cattle-system
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: ingress-nginx
+    chart: rancher
     repoURL: https://kubernetes.github.io/ingress-nginx
-    targetRevision: "4.4.0"
+    targetRevision: "2.8.2"
     helm:
-      releaseName: ingress-nginx
-      passCredentials: false
       parameters:
         - name: installCRDs
           value: "true"
